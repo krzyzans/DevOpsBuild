@@ -1,6 +1,6 @@
 jobs: 
   - job: 'Build'
-    displayName: 'Build job'
+    displayName: 'Build application'
     pool:
       vmImage: 'ubuntu-20.04'
       demands:
