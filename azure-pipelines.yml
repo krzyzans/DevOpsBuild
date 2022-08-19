@@ -55,4 +55,5 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
+  name: 'drop_my_first'
   condition: succeeded()
