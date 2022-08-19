@@ -1,22 +1,27 @@
 trigger:
 - '*'
 
+parameters:
+- name:  buildConfiguration
+  displayName: 'Build configuration'
+  type: string
+  default: 'Release'
+  values:
+  - Release
+  - Debug
+
 variables:
-    wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
-    dotnetSdkVersion: '6.x'
+  wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
+  dotnetSdkVersion: '6.x'
 
 stages:
 - stage: 'Build_application'
   displayName: 'Build the web application'
   jobs:
     - template: build.yml
-      parameters:
-        buildConfiguration: 'Release'
 
 - stage: 'Deploy_application'
   displayName: 'Deploy the web application'
   dependsOn: Build_application
   jobs:
     - template: deploy.yml
-      parameters:
-        buildConfiguration: 'Release'
