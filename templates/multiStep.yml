@@ -11,7 +11,7 @@ stages:
   jobs:
     - template: build.yml
       parameters:
-      buildConfiguration: 'Release'
+        buildConfiguration: 'Release'
 
 - stage: 'Deploy_application'
   displayName: 'Deploy the web application'
@@ -19,4 +19,4 @@ stages:
   jobs:
     - template: deploy.yml
       parameters:
-      buildConfiguration: 'Release'
+        buildConfiguration: 'Release'
