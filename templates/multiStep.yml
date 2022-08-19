@@ -8,13 +8,15 @@ variables:
 stages:
 - stage: 'Build_application'
   displayName: 'Build the web application'
-- template: build.yml
-  parameters:
-    buildConfiguration: 'Release'
+  jobs:
+    - template: build.yml
+      parameters:
+      buildConfiguration: 'Release'
 
 - stage: 'Deploy_application'
   displayName: 'Deploy the web application'
   dependsOn: Build
-- template: deploy.yml
-  parameters:
-    buildConfiguration: 'Release'
+  jobs:
+    - template: deploy.yml
+      parameters:
+      buildConfiguration: 'Release'
