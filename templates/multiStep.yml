@@ -19,9 +19,13 @@ stages:
   displayName: 'Build the web application'
   jobs:
     - template: build.yml
+      parameters:
+        buildConfiguration: ${{ parameters.buildConfiguration }}
 
 - stage: 'Deploy_application'
   displayName: 'Deploy the web application'
   dependsOn: Build_application
   jobs:
     - template: deploy.yml
+      parameters:
+        buildConfiguration: ${{ parameters.buildConfiguration }}
