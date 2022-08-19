@@ -22,9 +22,17 @@ stages:
       parameters:
         buildConfiguration: ${{ parameters.buildConfiguration }}
 
-- stage: 'Deploy_application'
-  displayName: 'Deploy the web application'
+- stage: 'Deploy_dev'
+  displayName: 'Deploy to dev'
   dependsOn: Build_application
+  jobs:
+    - template: deploy.yml
+      parameters:
+        buildConfiguration: ${{ parameters.buildConfiguration }}
+
+- stage: 'Deploy_test'
+  displayName: 'Deploy test'
+  dependsOn: Deploy_dev
   jobs:
     - template: deploy.yml
       parameters:
