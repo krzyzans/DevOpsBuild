@@ -1,0 +1,28 @@
+variables:
+    wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
+    dotnetSdkVersion: '6.x'
+
+stages:
+- stage: 'Deploy'
+  displayName: 'Deploy the web application'
+  dependsOn: Build
+  jobs:
+  - deployment: Deploy
+    pool:
+      vmImage: 'ubuntu-20.04'
+    environment: dev-env
+    variables:
+    - group: Dev-env
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop_my_first
+          - task: AzureWebApp@1
+            enabled: false
+            displayName: 'Azure App Service Deploy: website'
+            inputs:
+              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              appName: '$(WebAppName)'
+              package: '$(Pipeline.Workspace)/drop/${{ parameters.buildConfiguration }}/*.zip'
