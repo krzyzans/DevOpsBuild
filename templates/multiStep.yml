@@ -15,7 +15,7 @@ stages:
 
 - stage: 'Deploy_application'
   displayName: 'Deploy the web application'
-  dependsOn: Build
+  dependsOn: Build_application
   jobs:
     - template: deploy.yml
       parameters:
