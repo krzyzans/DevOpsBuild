@@ -1,8 +1,4 @@
-stages:
-- stage: 'Deploy'
-  displayName: 'Deploy the web application'
-  dependsOn: Build
-  jobs:
+jobs:
   - deployment: Deploy
     pool:
       vmImage: 'ubuntu-20.04'
