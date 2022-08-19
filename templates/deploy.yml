@@ -1,7 +1,3 @@
-variables:
-    wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
-    dotnetSdkVersion: '6.x'
-
 stages:
 - stage: 'Deploy'
   displayName: 'Deploy the web application'
