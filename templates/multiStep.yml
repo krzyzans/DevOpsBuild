@@ -6,13 +6,13 @@ variables:
     dotnetSdkVersion: '6.x'
 
 stages:
-- stage: 'Build'
+- stage: 'Build application'
   displayName: 'Build the web application'
 - template: build.yml
   parameters:
     buildConfiguration: 'Release'
 
-- stage: 'Deploy'
+- stage: 'Deploy application'
   displayName: 'Deploy the web application'
   dependsOn: Build
 - template: deploy.yml
